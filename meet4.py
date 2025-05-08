@@ -1,28 +1,39 @@
-# Program untuk mengecek bilangan
-def cek_bilangan(bilangan):
-    bil_str = str(bilangan)
+# Data mahasiswa
+mahasiswa = [
+    {"nama": "helmiati", "nilai": 87},
+    {"nama": "azxhizriati", "nilai": 75},
+    {"nama": "dinda", "nilai": 66},
+    {"nama": "aya", "nilai": 59},
+    {"nama": "fikra", "nilai": 45},
+    {"nama": "Fajar", "nilai": 39}
+]
 
-    # Cek panjang bilangan harus minimal 4 digit (karena 2 digit awal dan 2 digit akhir)
-    if len(bil_str) < 4:
-        return "Bilangan terlalu pendek"
-
-    dua_digit_awal = bil_str[:2]
-    dua_digit_akhir = bil_str[-2:]
-
-    if dua_digit_awal == "24" and dua_digit_akhir == "20":
-        return f"{bilangan} memenuhi syarat (awal = 24, akhir = 20)"
+# Fungsi konversi nilai ke huruf
+def konversi_nilai(nilai):
+    if nilai >= 85:
+        return "A"
+    elif nilai >= 80:
+        return "A-"
+    elif nilai >= 75:
+        return "B+"
+    elif nilai >= 70:
+        return "B"
+    elif nilai >= 65:
+        return "B-"
+    elif nilai >= 60:
+        return "C+"
+    elif nilai >= 55:
+        return "C"
+    elif nilai >= 50:
+        return "D"
+    elif nilai >= 40:
+        return "E"
     else:
-        return f"{bilangan} TIDAK memenuhi syarat"
+        return "E (Tidak Lulus)"
 
-# Contoh pengujian
-bilangan1 = 244520
-bilangan2 = 24120
-bilangan3 = 2420
-bilangan4 = 24020
-bilangan5 = 25120
-
-print(cek_bilangan(bilangan1))  # Tidak memenuhi
-print(cek_bilangan(bilangan2))  # Memenuhi
-print(cek_bilangan(bilangan3))  # Memenuhi
-print(cek_bilangan(bilangan4))  # Memenuhi
-print(cek_bilangan(bilangan5))  # Tidak memenuhi
+# Menampilkan tabel
+print("{:<10} {:<10} {:<10}".format("Nama", "Nilai", "Grade"))
+print("-" * 30)
+for mhs in mahasiswa:
+    grade = konversi_nilai(mhs["nilai"])
+    print("{:<10} {:<10} {:<10}".format(mhs["nama"], mhs["nilai"], grade))
